@@ -1,0 +1,48 @@
+part of 'app_pages.dart';
+
+abstract class Routes {
+  static const id1 = 1;
+  static const id2 = 2;
+  static const id3 = 3;
+  static const id4 = 4;
+  static const id5 = 5;
+  static const SPLASH = '/splash';
+  static const AUTH = '/auth';
+  static const LOGIN = '/login';
+  static const REGISTER = '/register';
+  static const HOME = '/home';
+  static const TASK = '/task';
+  static const NOTIFICATION = '/notification';
+  static const SETTING = '/setting';
+  static const MAIN = '/main';
+  static const CARDS = '/cards';
+  static const DISCOVER = '/discoverTab';
+  static const RESOURCE = '/resourceTab';
+  static const INDEX = '/inboxTab';
+ // static const SETTING = '/settingTab';
+  static const EDIT_PROFILE = '/editProfile';
+  static const REFER_AND_EARN = '/referAndEarn';
+  static const VOICE_ASSISTANTS = '/voiceAssistants';
+  static const TERMS_CONDITION = '/termsCondition';
+  static const CHECKLIST = '/checklist';
+  static const CHECKLIST_CATEGORY = '/checklistCategory';
+  static const PLAN_AND_BILLING = '/planAndBilling';
+  static const TO_DO_LIST = '/todolist';
+  static const TASK_CATEGORY = '/taskCategory';
+  static const ADD_TASK = '/addTask';
+  static const QUESTION = '/question';
+  static const PROGRESS_REPORT = '/progressReport';
+  static const SIGNIN = '/sigin';
+  static const googleMap = '/googleMap';
+  static const EXAMINATION = '/examination';
+  static const PLAN_SUBSCRIPTION = '/planSubscription';
+  static const SHOW_LEVEL = '/showLevel';
+  static const LEVEL = '/level';
+  static const BOOK_INSPECTION = '/bookInspection';
+  static const BOOK_INSPECTION_DETAIL = '/bookInspectionDetail';
+  static const ACCOUNT_MANAGER = '/accountManager';
+  static const ON_BOARDING = '/onBoarding';
+  static const USER_DETAIL = '/userDetail';
+  static const EXAMINATION_RESULTS = '/examinationResults';
+  static const SUMMARY_REPORT = '/summaryReport';
+}
