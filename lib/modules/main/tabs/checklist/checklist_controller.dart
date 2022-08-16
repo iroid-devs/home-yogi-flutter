@@ -16,7 +16,7 @@ class CheckListController extends GetxController {
   var checkListResponse = CheckListResponse().obs;
 
   List<CheckListModel> checkListModelList = [
-    CheckListModel(
+    CheckListModel (
         image: 'checklist_all',
         titleText: StringConstants.checklistAll,
         subText: StringConstants.progress,
