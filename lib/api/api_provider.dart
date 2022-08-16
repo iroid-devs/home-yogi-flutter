@@ -21,7 +21,7 @@ class ApiProvider extends BaseProvider {
       isMultipart ? formData : data,
       headers: {
         'accept': 'application/json',
-        'Content-Type': 'application/json',
+
         'Authorization': 'Bearer ${prefs.getString(StorageConstants.token)}',
       },
     ).catchError((e) {

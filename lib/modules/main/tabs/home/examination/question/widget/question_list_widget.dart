@@ -286,7 +286,7 @@ class QuestionListWidget extends GetView<QuestionController> {
           //   );
           // }),
 
-          _buildSubmitView(questionModel: examinationQuestionModel),
+          _buildSubmitView(examinationQuestionModel: examinationQuestionModel),
         ],
       ),
     );
@@ -312,8 +312,8 @@ class QuestionListWidget extends GetView<QuestionController> {
     );
   }
 
-  _buildSubmitView({required ExaminationQuestionResponse questionModel}) {
-    return questionModel.answer!.isNotEmpty
+  _buildSubmitView({required ExaminationQuestionResponse examinationQuestionModel}) {
+    return examinationQuestionModel.answer!.isNotEmpty
         ? BaseElevatedButton(
       //width: 40,
       height: 30,
@@ -353,7 +353,7 @@ class QuestionListWidget extends GetView<QuestionController> {
     )
         :
        Opacity(
-        opacity: questionModel.answer!.isEmpty ? 0.3 : 1,
+        opacity: examinationQuestionModel.answer!.isEmpty ? 0.3 : 1,
         child: BaseElevatedButton(
           //width: 40,
           height: getSize(30.0),
@@ -361,10 +361,11 @@ class QuestionListWidget extends GetView<QuestionController> {
           // onPressed: (){
           //   _showDialog();
           // },
-          onPressed: questionModel.answer!.isEmpty
+          onPressed: examinationQuestionModel.answer!.isEmpty
               ? null
               : () {
             _showDialog();
+           // controller.examinationAnswer(examinationQuestionModel.questionId ?? 0);
           },
           child: BaseText(
             text: StringConstants.buttonSubmit,

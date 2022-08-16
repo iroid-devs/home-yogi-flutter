@@ -6,6 +6,8 @@ import 'package:home_yogi_flutter/modules/main/tabs/notification/notification_co
 import 'package:home_yogi_flutter/modules/main/tabs/setting/setting_controller.dart';
 import 'package:home_yogi_flutter/modules/splash/splash_controller.dart';
 
+import '../../helper/push_notification_helper.dart';
+
 class MainBindings implements Bindings {
   @override
   void dependencies() {
@@ -39,6 +41,10 @@ class MainBindings implements Bindings {
       () => CheckListController(
         apiRepository: Get.find(),
       ),
+    );
+    Get.put(
+      PushNotificationService(apiRepository: Get.find()).setupInteractedMessage(),
+      permanent: true,
     );
   }
 }

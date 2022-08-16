@@ -28,4 +28,5 @@ class ApiConstants {
   static const inspectionManager = 'inspections/manager';
   static const bookInspectionDetails = 'inspections';
   static const examinationAnswer = 'answers';
+  static const fcmToken = 'fcm/token';
 }

@@ -341,5 +341,16 @@ class ApiRepository {
     return null;
   }
 
+  Future<CommonResponse?> fcmToken(Map<String, dynamic> data) async {
+    final res =
+    await apiProvider.postMethod(ApiConstants.fcmToken, data);
+  print("resNotification===========++++++++++++++$res");
+    if (res.dioMessage != null) {
+      return CommonResponse(dioMessage: res.dioMessage, status: res.status);
+    } else {
+      return null;
+    }
+  }
+
 
 }

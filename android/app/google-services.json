@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "495955132663",
+    "project_id": "home-yogi-66152",
+    "storage_bucket": "home-yogi-66152.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495955132663:android:2925a4cf6d6861417ad3f2",
+        "android_client_info": {
+          "package_name": "com.iroid.home_yogi_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495955132663-t0v0cu1c5h6or5b1771sgbvpphjqever.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZObCx5REWbjRwKg7Jqbd4Yn3Iq5h6NKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495955132663-t0v0cu1c5h6or5b1771sgbvpphjqever.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "495955132663-b89rou2punj73g9na4iqsfkejb742odl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.iroid.homeYogiFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

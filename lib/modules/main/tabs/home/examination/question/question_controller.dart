@@ -126,12 +126,11 @@ class QuestionController extends GetxController {
   examinationAnswer (int id) async {
     final formData = FormData({
       'questionId': id,
-      'images': MultipartFile(["assets/images/png/bez2.png"],
-          filename: 'document.png', contentType: "multipart/png"),
+      'images': '',
     });
     print("formData========+++++++${formData}");
     var res = await apiRepository.examinationAnswer(formData);
-    print("res==============================$res");
+    print("examinationAnswer==============================$res");
   }
 
   @override
@@ -141,6 +140,5 @@ class QuestionController extends GetxController {
     print("argumentData[0] =====${argumentData.toJson()}");
     super.onInit();
 
-}
-
+ }
 }
