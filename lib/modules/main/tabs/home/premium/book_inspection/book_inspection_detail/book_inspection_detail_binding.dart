@@ -6,7 +6,7 @@ import 'book_inspection_detail_controller.dart';
 class BookInspectionDetailBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<BookInspectionDetailController>(() => BookInspectionDetailController());
+    Get.lazyPut<BookInspectionDetailController>(() => BookInspectionDetailController(apiRepository: Get.find()));
   }
 
 }

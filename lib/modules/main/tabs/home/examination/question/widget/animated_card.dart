@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:home_yogi_flutter/modules/main/tabs/home/examination/question/model/question_model.dart';
 import 'package:home_yogi_flutter/modules/main/tabs/home/examination/question/viewphoto/view_photo.dart';
 
+import '../../../../../../../models/response/home/examination_question_response.dart';
 import '../../../../../../../shared/constants/colors.dart';
 import '../../../../../../../shared/utils/math_utils.dart';
 import '../../../../../../../shared/widgets/base_text.dart';
@@ -18,17 +19,15 @@ import '../takephoto/take_photo_binding.dart';
 import '../takephoto/take_photo_view.dart';
 
 class AnimatedCard extends GetView<QuestionController> {
-  final QuestionModel questionModel;
+  final ExaminationQuestionResponse questionModel;
   const AnimatedCard({Key? key, required this.questionModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     InfiniteCardsController? _infiniteCardsController;
-    return Obx(() {
       printInfo(info: 'build() called...');
       return _buildAnimationSlider(
-          questionModel.localImagePathList.length, _infiniteCardsController);
-    });
+          questionModel.answer!.length, _infiniteCardsController);
   }
 
   _buildAnimationSlider(
@@ -36,12 +35,12 @@ class AnimatedCard extends GetView<QuestionController> {
     _infiniteCardsController = InfiniteCardsController(
       itemCount: _getItemCount(),
       itemBuilder: (BuildContext context, int index) {
-        return questionModel.questionSubmitted
+        return questionModel.answer!.isNotEmpty
             ? _buildNetworkPhotoView(index, _infiniteCardsController)
-            : questionModel.localImagePathList.isEmpty
+            : questionModel.answer!.isEmpty
                 ? _buildTakePhotoView1()
                 : _buildTakePhotoView2(
-                    imagePath: questionModel.localImagePathList[index],
+                    imagePath: questionModel.answer![index].toString(),
                     index: index,
                     infiniteCardsController: _infiniteCardsController!);
       },
@@ -56,19 +55,18 @@ class AnimatedCard extends GetView<QuestionController> {
       height: getSize(140),
       controller: _infiniteCardsController,
     );
-
     return infiniteCards;
   }
 
   int _getItemCount() {
     int totalItem = 0;
 
-    if (questionModel.questionSubmitted) {
-      totalItem = questionModel.imagePathList.length;
+    if (questionModel.answer!.isNotEmpty) {
+      totalItem = questionModel.answer!.length;
     } else {
-      totalItem = questionModel.localImagePathList.isEmpty
+      totalItem = questionModel.answer!.isEmpty
           ? 1
-          : questionModel.localImagePathList.length;
+          : questionModel.answer!.length;
     }
 
     return totalItem;
@@ -82,7 +80,7 @@ class AnimatedCard extends GetView<QuestionController> {
         onTap: () {
           Get.to(
             ViewPhotoScreen(
-              networkImagePath: questionModel.imagePathList[index],
+              networkImagePath: questionModel.answer![index].toString(),
             ),
           );
         },
@@ -97,7 +95,7 @@ class AnimatedCard extends GetView<QuestionController> {
             image: DecorationImage(
               fit: BoxFit.fill,
               image: NetworkImage(
-                questionModel.imagePathList[index],
+                questionModel.answer![index].toString(),
               ),
             ),
             borderRadius: BorderRadius.all(
@@ -167,7 +165,7 @@ class AnimatedCard extends GetView<QuestionController> {
                 width: Get.width,
                 height: getSize(140),
               ),
-              questionModel.localImagePathList.length < 3
+              questionModel.answer!.length < 3
                   ? Container(
                       height: getSize(140),
                       width: Get.size.width,
@@ -183,7 +181,7 @@ class AnimatedCard extends GetView<QuestionController> {
                       ),
                     )
                   : Container(),
-              questionModel.localImagePathList.length < 3
+              questionModel.answer!.length < 3
                   ? Positioned(
                       bottom: getSize(12),
                       right: getSize(12),
@@ -234,20 +232,20 @@ class AnimatedCard extends GetView<QuestionController> {
           //controller.addImagePath(imagePath: photoPath);
 
           if (imagePath.isEmpty) {
-            questionModel.localImagePathList.insert(0, result['imagePath']);
+            questionModel.answer!.insert(0, result['imagePath']);
           } else {
-            questionModel.localImagePathList.isNotEmpty
-                ? questionModel.localImagePathList
+            questionModel.answer!.isNotEmpty
+                ? questionModel.answer!
                     .removeAt(index) //removes the item at index
                 : null;
-            questionModel.localImagePathList.insert(
+            questionModel.answer!.insert(
               index,
               result['imagePath'],
             );
           }
         } else if (result['action'] == 'DELETE') {
-          questionModel.localImagePathList.isNotEmpty
-              ? questionModel.localImagePathList
+          questionModel.answer!.isNotEmpty
+              ? questionModel.answer!
                   .removeAt(index) //removes the item at index
               : null;
         }

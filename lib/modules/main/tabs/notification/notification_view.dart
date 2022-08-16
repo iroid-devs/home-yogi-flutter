@@ -55,8 +55,8 @@ class NotificationScreen extends GetView<NotificationController> {
                 physics: BouncingScrollPhysics(),
                 itemBuilder: ((context, index) {
                   return Opacity(
-                    opacity: controller.notificationResponse[index].reatAt!
-                        ? 0.4
+                    opacity: controller.notificationResponse[index].readAt == 1
+                        ? 0.2
                         : 1,
                     child: CommonContainerWithShadow(
                       // padding: EdgeInsets.symmetric(
@@ -68,11 +68,10 @@ class NotificationScreen extends GetView<NotificationController> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          if(controller.notificationResponse[index].notificationId != null){
+                          if(controller.notificationResponse[index].notificationId != null) {
                             controller.readNotification(controller.notificationResponse[index].notificationId!);
                           }
-                          //
-                          // controller.notificationResponse[index].reatAt!
+                          // controller.notificationResponse[index].readAt != null
                           //     ? null
                           //     : Get.to(
                           //   ExaminationView(),
@@ -679,8 +678,7 @@ class NotificationScreen extends GetView<NotificationController> {
                             ColorConstants.todayGradient2
                           ]),
                       Visibility(
-                        visible:
-                        !controller.notificationResponse[index].reatAt!,
+                        visible: controller.notificationResponse[index].readAt == 1 ,
                         child: Positioned(
                           top: getSize(-1.0),
                           right: getSize(-1.0),

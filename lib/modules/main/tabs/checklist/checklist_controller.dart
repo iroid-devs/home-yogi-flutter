@@ -30,7 +30,7 @@ class CheckListController extends GetxController {
           ColorConstants.gradientPinkEnd,
         ]),
     CheckListModel(
-        image:  'checklist_indoor',
+        image: 'checklist_indoor',
         titleText: StringConstants.checklistIndoor,
         subText: StringConstants.progress,
         percentage: 60,

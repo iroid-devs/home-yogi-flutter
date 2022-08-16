@@ -13,11 +13,12 @@ class ApiProvider extends BaseProvider {
   CommonResponse commonResponse = CommonResponse();
   final prefs = Get.find<SharedPreferences>();
   Future<CommonResponse> postMethod(
-      String path, Map<String, dynamic> data) async {
+      String path, Map<String, dynamic> data,{bool isMultipart = false,
+        FormData? formData}) async {
     printInfo(info: "API Request ======= $data");
     Response response = await post(
       path,
-      data,
+      isMultipart ? formData : data,
       headers: {
         'accept': 'application/json',
         'Content-Type': 'application/json',

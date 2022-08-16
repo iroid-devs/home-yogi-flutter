@@ -6,7 +6,7 @@ import 'package:home_yogi_flutter/modules/main/tabs/home/premium/book_inspection
 class BookInspectionConfirmBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<BookInspectionController>(() => BookInspectionController());
+    Get.lazyPut<BookInspectionController>(() => BookInspectionController(apiRepository: Get.find()));
   }
 
 }

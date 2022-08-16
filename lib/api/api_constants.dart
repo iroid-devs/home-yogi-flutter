@@ -24,4 +24,8 @@ class ApiConstants {
   static const loginOut = 'auth/logout';
   static const readNotification = 'notifications';
   static const subscriptionPlan = 'subscription/plans';
+  static const bookInspection = 'inspections';
+  static const inspectionManager = 'inspections/manager';
+  static const bookInspectionDetails = 'inspections';
+  static const examinationAnswer = 'answers';
 }

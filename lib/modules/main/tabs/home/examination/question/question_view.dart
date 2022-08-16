@@ -44,7 +44,7 @@ class QuestionView extends GetView<QuestionController> {
   }
 
   _buildMainBody(ExaminationResponse examinationResponse) {
-    controller.initQuestions();
+    //controller.initQuestions();
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -140,13 +140,13 @@ class QuestionView extends GetView<QuestionController> {
         ),
         GestureDetector(
           onTap: () => controller.currentQuestion.value <
-                  controller.questionModelList.length - 1
+                  controller.examinationQuestionResponse.length - 1
               ? controller.carouselController.nextPage()
               : null,
           child: Obx(() {
             return Opacity(
               opacity: controller.currentQuestion.value ==
-                      controller.questionModelList.length - 1
+                      controller.examinationQuestionResponse.length - 1
                   ? 0.5
                   : 1,
               child: SvgPicture.asset(
@@ -161,7 +161,7 @@ class QuestionView extends GetView<QuestionController> {
 
   String getPageNavigationText() {
     int currentQuestion = controller.currentQuestion.value + 1;
-    int totalQuestion = controller.questionModelList.length;
+    int totalQuestion = controller.examinationQuestionResponse.length;
     return '$currentQuestion Out of $totalQuestion';
   }
 }

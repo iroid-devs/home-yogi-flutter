@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:home_yogi_flutter/models/response/premium/book_inspection_response.dart';
 import 'package:home_yogi_flutter/modules/main/tabs/home/premium/book_inspection/book_inspection_binding.dart';
 import 'package:home_yogi_flutter/modules/main/tabs/home/premium/book_inspection/book_inspection_detail/book_inspection_detail_controller.dart';
 import 'package:home_yogi_flutter/modules/main/tabs/home/premium/book_inspection/book_inspection_detail/widget/available_date_widget.dart';
@@ -19,8 +20,8 @@ import '../book_inspection_confirm/book_inspection_confirm_view.dart';
 import '../book_inspection_controller.dart';
 
 class BookInspectionDetailView extends GetView<BookInspectionDetailController> {
-  InspectionExamModel inspectionExamModel;
-  BookInspectionDetailView({Key? key , required this.inspectionExamModel}) : super(key: key);
+  BookInspectionResponse bookInspectionResponse;
+  BookInspectionDetailView({Key? key , required this.bookInspectionResponse}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class BookInspectionDetailView extends GetView<BookInspectionDetailController> {
       children: [
         Center(
           child: BaseText(
-            text: '${inspectionExamModel.titleText} inspection',
+            text: '${bookInspectionResponse.name} inspection',
             fontSize: 14,
             fontWeight: FontWeight.w500,
             textColor: ColorConstants.white.withOpacity(0.8),

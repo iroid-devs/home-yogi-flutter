@@ -88,7 +88,8 @@ class TaskCategoryController extends GetxController {
         queryParameter: {
       'category' :  "1",
       'tagId' :  "4",
-    });
+    }
+    );
     if (res != null) {
       toDoListTaskResponse.value = res;
     }

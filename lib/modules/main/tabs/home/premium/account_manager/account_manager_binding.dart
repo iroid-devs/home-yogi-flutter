@@ -5,6 +5,6 @@ import 'package:home_yogi_flutter/modules/main/tabs/home/premium/account_manager
 class AccountManagerBinding extends Bindings{
   @override
   void dependencies() {
-   Get.lazyPut<AccountManagerController>(() => AccountManagerController());
+   Get.lazyPut<AccountManagerController>(() => AccountManagerController(apiRepository: Get.find()));
   }
 }

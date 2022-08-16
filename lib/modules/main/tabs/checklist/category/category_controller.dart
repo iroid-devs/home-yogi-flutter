@@ -85,7 +85,11 @@ class CheckListCategoryController extends GetxController {
   }
 
   getCheckListDetails() async {
-    var res = await apiRepository.getCheckListDetails();
+    var res = await apiRepository.getCheckListDetails(
+        queryParameter: {
+          'category' :  "1",
+                  }
+    );
     if (res != null) {
       checkListDetailsResponse.value = res;
     }

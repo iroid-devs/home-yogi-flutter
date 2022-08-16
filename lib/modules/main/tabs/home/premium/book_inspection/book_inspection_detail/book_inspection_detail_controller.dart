@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:home_yogi_flutter/models/response/premium/book_inspection_details_response.dart';
+
+import '../../../../../../../api/api_repository.dart';
 
 class BookInspectionDetailController extends GetxController{
+  final ApiRepository apiRepository;
+  BookInspectionDetailController({required this.apiRepository});
 
+  BookInspectionDetailsResponse bookInspectionDetailsResponse = BookInspectionDetailsResponse();
   var familyContact = 1.obs;
 
   var inspectionDate = '25 May 2022'.obs;
@@ -30,6 +36,17 @@ class BookInspectionDetailController extends GetxController{
     familyEmailControllerList.removeAt(index);
     familyPhoneControllerList.removeAt(index);
     familyContact.value = familyContact.value - 1;
+  }
+
+  getBookInspectionDetails(int id) async{
+    var res = await apiRepository.getBookInspectionDetails(id);
+    print(" BookInspectionDetails =============${res}");
+  }
+
+  @override
+  void onInit() {
+    getBookInspectionDetails(1);
+    super.onInit();
   }
 
 }

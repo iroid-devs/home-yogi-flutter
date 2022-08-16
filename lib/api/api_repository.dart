@@ -7,6 +7,7 @@ import 'package:home_yogi_flutter/models/response/home/levels_top_response.dart'
 import 'package:home_yogi_flutter/models/response/home/notification_response.dart';
 import 'package:home_yogi_flutter/models/response/home/to_do_list_task_details_response.dart';
 import 'package:home_yogi_flutter/models/response/home/to_do_list_task_response.dart';
+import 'package:home_yogi_flutter/models/response/premium/book_inspection_details_response.dart';
 import '../models/response/auth/user_detail_response.dart';
 import '../models/response/home/examination_response.dart';
 import '../models/response/home/levels_response.dart';
@@ -14,6 +15,8 @@ import '../models/response/home/progress_report_response.dart';
 import '../models/response/home/rewards_response.dart';
 import '../models/response/home/subscription_plan_response.dart';
 import '../models/response/home/to_do_list_response.dart';
+import '../models/response/premium/book_inspection_response.dart';
+import '../models/response/premium/inspection_manager_response.dart';
 import '../models/response/users_response.dart';
 import 'api.dart';
 import '../models/response/auth/otp_verify_response.dart';
@@ -140,9 +143,10 @@ class ApiRepository {
     return null;
   }
 
-  Future<CheckListDetailsResponse?> getCheckListDetails() async {
+  Future<CheckListDetailsResponse?> getCheckListDetails({required Map<String, dynamic> queryParameter}) async {
+    print("CheckListDetailsqueryParameter..............=============$queryParameter");
     final res = await apiProvider.getMethod(ApiConstants.checklistDetails);
-    print("resToDoList==============${res.data}");
+    print("CheckListDetailsResponse==============${res.data}");
     if (res.data != null) {
       return CheckListDetailsResponse.fromJson(res.data);
     }
@@ -207,8 +211,7 @@ class ApiRepository {
     return null;
   }
 
-  Future<CommonResponse?> toDoListTaskComplete(
-      int id, Map<String, dynamic> data) async {
+  Future<CommonResponse?> toDoListTaskComplete(int id, Map<String, dynamic> data) async {
     //print("Data : ======$data");
     final res = await apiProvider.postMethod(
         "${ApiConstants.todoListTaskComplete}/$id/completed", data);
@@ -293,4 +296,50 @@ class ApiRepository {
     }
     return null;
   }
+
+  Future<List<BookInspectionResponse>?> getBookInspection() async {
+    final res = await apiProvider.getMethod(ApiConstants.bookInspection);
+    print("BookInspectionResponse==============${(res.data)}");
+    if (res.data != null) {
+      List<dynamic> listData = res.data;
+      return listData
+          .map((e) => BookInspectionResponse.fromJson(e as Map<String, dynamic>))
+          .toList();
+      // return ExaminationResponse.fromJson(res.data);
+    } else {
+      return null;
+    }
+  }
+
+
+  Future<InspectionManagerResponse?> getInspectionManager() async {
+    final res = await apiProvider.getMethod(ApiConstants.inspectionManager);
+    print("InspectionManagerResponse==============${res.data}");
+    if (res.data != null) {
+      return InspectionManagerResponse.fromJson(res.data);
+    }
+    return null;
+  }
+
+  Future<BookInspectionDetailsResponse?> getBookInspectionDetails(int id) async {
+    final res = await apiProvider.getMethod("${ApiConstants.bookInspectionDetails}/$id");
+    print("InspectionManagerResponse==============${res.data}");
+    if (res.data != null) {
+      return BookInspectionDetailsResponse.fromJson(res.data);
+    }
+    return null;
+  }
+
+  Future<CommonResponse?> examinationAnswer(FormData data) async {
+    //print("Data : ======$data");
+    final res = await apiProvider.postMethod(ApiConstants.examinationAnswer,
+        {},formData: data, isMultipart: true);
+    //print("resData : ======${res.dioMessage}");
+    if (res.dioMessage != null) {
+      return CommonResponse(dioMessage: res.dioMessage);
+    }
+    return null;
+  }
+
+
 }

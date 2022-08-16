@@ -3,23 +3,23 @@ class NotificationResponse {
   String? title;
   String? message;
   int? type;
-  bool? reatAt;
+  int? readAt;
   int? createdAt;
 
   NotificationResponse(
       {this.notificationId,
-      this.title,
-      this.message,
-      this.type,
-      this.reatAt,
-      this.createdAt});
+        this.title,
+        this.message,
+        this.type,
+        this.readAt,
+        this.createdAt});
 
   NotificationResponse.fromJson(Map<String, dynamic> json) {
     notificationId = json['notificationId'];
     title = json['title'];
     message = json['message'];
     type = json['type'];
-    reatAt = json['reatAt'] == null ? false : json['reatAt'];
+    readAt = json['readAt'];
     createdAt = json['createdAt'];
   }
 
@@ -29,7 +29,7 @@ class NotificationResponse {
     data['title'] = this.title;
     data['message'] = this.message;
     data['type'] = this.type;
-    data['reatAt'] = this.reatAt;
+    data['readAt'] = this.readAt;
     data['createdAt'] = this.createdAt;
     return data;
   }
