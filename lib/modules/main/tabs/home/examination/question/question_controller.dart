@@ -123,7 +123,7 @@ class QuestionController extends GetxController {
         "examinationQuestionResponse1===============${examinationQuestionResponse.map((e) => e.toJson())}");
   }
 
-  examinationAnswer(int id) async {
+  examinationAnswer (int id) async {
     final formData = FormData({
       'questionId': id,
       'images': MultipartFile(["assets/images/png/bez2.png"],
